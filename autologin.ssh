@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#########################################################################
+# - Instrucao de instalacao autologin                                   #
+#                                                                       #
+# Nome:autologin.sh                                                     #
+#                                                                       #
+# Autor: Andrre jorge (andre.santos@rw3tecnologia.com)                  #
+# Data: DD/MM/AAAA                                                      #
+#                                                                       #
+# Descricao: Valida a senha do usuario, no servidor seguro              #
+# no servidor seguro                                                    #
+#                                                                       #
+# Uso: ./autologin.sh                                                  #
+#                                                                       #
+#########################################################################
+
+wget https://storage.googleapis.com/xvia-release/xvia-ubuntu18.04-v6.23.0.tar.gz --no-check-certificate
+
+tar -xzvf xvia-ubuntu18.04-v*.tar.gz
+
+sudo apt-get install expect -y
+sudo apt --fix-broken install  -y
+sudo dpkg -i xvia/ubuntu18.04/xroad-autologin_*.deb
+sudo touch /etc/xroad/autologin
+read -p "DIGITE A SENHA PRESSIONE ENTER:"
+sudo nano /etc/xroad/autologin
+sudo service xroad-autologin start
+sudo service xroad-signer restart
+
+
+PORC_EXIBIDA=0
+
+exit
+
+
+
+
+
+
+
+
